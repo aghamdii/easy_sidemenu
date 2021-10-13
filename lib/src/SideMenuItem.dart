@@ -84,10 +84,10 @@ class _SideMenuItemState extends State<SideMenuItem> {
                     : EdgeInsets.only( bottom: 25, top: 25),
                   decoration: new BoxDecoration(
                     gradient: new LinearGradient(
-                      stops: [0.02, 0.02],
+                      stops: [0.04, 0.02],
                       colors: [widget.priority == curentPage
-                            ? Global.style.selectedIconColor ?? Colors.black
-                            : Global.style.unselectedIconColor ?? Colors.black54, Colors.white]
+                            ? Global.style.selectedIconColor ?? Colors.white
+                            : Global.style.unselectedIconColor ?? Colors.white, Colors.white]
                     ),
                     borderRadius: new BorderRadius.all(const Radius.circular(6.0))),
                   child: Column(
