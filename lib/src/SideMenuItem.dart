@@ -69,7 +69,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
         padding: EdgeInsets.symmetric(horizontal: 5),
         child: Container(
           height: widget.itemHeight,
-          // width: double.infinity,
+          width: double.infinity,
           decoration: BoxDecoration(
             color: _setColor(),
             borderRadius: BorderRadius.all(Radius.circular(5)),
