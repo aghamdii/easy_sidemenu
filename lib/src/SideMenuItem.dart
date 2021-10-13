@@ -81,7 +81,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
               Padding(
                 padding: value == SideMenuDisplayMode.compact
                     ? EdgeInsets.only(left: 8.0)
-                    : EdgeInsets.only( bottom: 31, top: 31),
+                    : EdgeInsets.only( bottom: 15, top: 15),
                 child: 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
