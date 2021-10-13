@@ -79,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
             items: [
               SideMenuItem(
                 priority: 0,
+                itemHeight: 8,
                 title: 'Dashboard',
                 onTap: () {
                   page.jumpToPage(0);
@@ -87,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SideMenuItem(
                 priority: 1,
+                itemHeight: 8,
                 title: 'Users',
                 onTap: () {
                   page.jumpToPage(1);
@@ -95,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SideMenuItem(
                 priority: 2,
+                itemHeight: 8,
                 title: 'Files',
                 onTap: () {
                   page.jumpToPage(2);
@@ -103,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SideMenuItem(
                 priority: 3,
+                itemHeight: 8,
                 title: 'Download',
                 onTap: () {
                   page.jumpToPage(3);
@@ -111,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SideMenuItem(
                 priority: 4,
+                itemHeight: 8,
                 title: 'Settings',
                 onTap: () {
                   page.jumpToPage(4);
@@ -119,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SideMenuItem(
                 priority: 6,
+                itemHeight: 8,
                 title: 'Exit',
                 onTap: () async {},
                 icon: Icons.exit_to_app,
