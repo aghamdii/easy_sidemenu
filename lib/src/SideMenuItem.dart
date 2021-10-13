@@ -54,7 +54,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
   /// Set background color of [SideMenuItem]
   Color _setColor() {
     if (widget.priority == curentPage) {
-      return Color(0XffF6F6FC);
+      return Global.style.selectedColor ?? Theme.of(context).highlightColor;
     } else if (isHovered) {
       return Global.style.hoverColor ?? Colors.transparent;
     } else {
@@ -87,7 +87,9 @@ class _SideMenuItemState extends State<SideMenuItem> {
                       stops: [0.04, 0.02],
                       colors: [widget.priority == curentPage
                             ? Global.style.selectedIconColor ?? Colors.white
-                            :  Colors.white, Colors.white]
+                            :  Colors.white, widget.priority == curentPage
+                            ? Color(0XffF6F6FC)
+                            :  Colors.white]
                     ),
                     borderRadius: new BorderRadius.all(const Radius.circular(6.0))),
                   child: Column(
