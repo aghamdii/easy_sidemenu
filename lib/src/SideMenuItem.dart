@@ -78,38 +78,40 @@ class _SideMenuItemState extends State<SideMenuItem> {
             valueListenable: Global.displayModeState,
             builder: (context, value, child) {
               return 
-              Padding(
-                padding: value == SideMenuDisplayMode.compact
+                Container(
+                  padding: value == SideMenuDisplayMode.compact
                     ? EdgeInsets.only(left: 8.0)
-                    : EdgeInsets.only( bottom: 15, top: 15),
-                child: 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      widget.icon,
-                      color: widget.priority == curentPage
-                          ? Global.style.selectedIconColor ?? Colors.black
-                          : Global.style.unselectedIconColor ?? Colors.black54,
-                      size: Global.style.iconSize ?? 24,
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    if (value == SideMenuDisplayMode.open)
-                      Expanded(
-                        child: Text(
-                          widget.title,
-                          style: widget.priority == curentPage
-                              ? TextStyle(fontSize: 17, color: Colors.black)
-                                  .merge(Global.style.selectedTitleTextStyle)
-                              : TextStyle(fontSize: 17, color: Colors.black54)
-                                  .merge(Global.style.unselectedTitleTextStyle),
-                        ),
+                    : EdgeInsets.only( bottom: 25, top: 25),
+                  decoration: BoxDecoration(border: Border(left: BorderSide(width: 10, color: widget.priority == curentPage
+                            ? Global.style.selectedIconColor ?? Colors.black
+                            : Global.style.unselectedIconColor ?? Colors.black54,),), borderRadius: BorderRadius.only(topLeft: Radius.circular(16), bottomLeft: Radius.circular(16))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        widget.icon,
+                        color: widget.priority == curentPage
+                            ? Global.style.selectedIconColor ?? Colors.black
+                            : Global.style.unselectedIconColor ?? Colors.black54,
+                        size: Global.style.iconSize ?? 24,
                       ),
-                  ],
-                ),
-              );
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      if (value == SideMenuDisplayMode.open)
+                        Expanded(
+                          child: Text(
+                            widget.title,
+                            style: widget.priority == curentPage
+                                ? TextStyle(fontSize: 17, color: Colors.black)
+                                    .merge(Global.style.selectedTitleTextStyle)
+                                : TextStyle(fontSize: 17, color: Colors.black54)
+                                    .merge(Global.style.unselectedTitleTextStyle),
+                          ),
+                        ),
+                    ],
+                  ),
+                );
             },
           ),
         ),
