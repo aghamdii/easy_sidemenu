@@ -78,7 +78,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
                 padding: value == SideMenuDisplayMode.compact
                     ? EdgeInsets.only(left: 8.0)
                     : EdgeInsets.only(left: 8.0, bottom: 8, top: 8),
-                child: Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(
@@ -89,7 +89,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
                       size: Global.style.iconSize ?? 24,
                     ),
                     SizedBox(
-                      width: 8.0,
+                      height: 10.0,
                     ),
                     if (value == SideMenuDisplayMode.open)
                       Expanded(
