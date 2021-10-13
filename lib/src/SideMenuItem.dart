@@ -12,6 +12,7 @@ class SideMenuItem extends StatefulWidget {
     required this.title,
     required this.icon,
     required this.priority,
+    required this.itemHeight
   }) : super(key: key);
 
   /// A function that call when tap on [SideMenuItem]
@@ -22,6 +23,8 @@ class SideMenuItem extends StatefulWidget {
 
   /// A Icon to display before [title]
   final IconData icon;
+
+  final double itemHeight;
 
   /// Priority of item to show on [SideMenu], lower value is displayed at the top
   ///
@@ -65,7 +68,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 5),
         child: Container(
-          height: 200,
+          height: widget.itemHeight,
           width: double.infinity,
           decoration: BoxDecoration(
             color: _setColor(),
