@@ -65,22 +65,21 @@ class _SideMenuItemState extends State<SideMenuItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: Container(
-          height: widget.itemHeight,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: _setColor(),
-            borderRadius: BorderRadius.all(Radius.circular(5)),
-          ),
-          child: ValueListenableBuilder(
-            valueListenable: Global.displayModeState,
-            builder: (context, value, child) {
-              return 
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5),
+            child: Container(
+              height: widget.itemHeight,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: _setColor(),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
+              child: ValueListenableBuilder(
+                valueListenable: Global.displayModeState,
+                builder: (context, value, child) {
+                  return 
                   Padding(
                     padding: value == SideMenuDisplayMode.compact
                         ? EdgeInsets.only(left: 8.0)
@@ -112,19 +111,18 @@ class _SideMenuItemState extends State<SideMenuItem> {
                           ),
                       ],
                     ),
-                  ),
-                   Container(
-                     width: 10,
-                     color: widget.priority == curentPage
+                  );
+                },
+              ),
+            ),
+          ),
+          Container(
+            width: 10,
+            color: widget.priority == curentPage
                               ? Global.style.selectedIconColor ?? Colors.black
                               : Global.style.unselectedIconColor ?? Colors.black54,
-                   )
-                   
-                ],
-              );
-            },
-          ),
-        ),
+          )
+        ],
       ),
       onTap: () => widget.onTap(),
       onHover: (value) {
