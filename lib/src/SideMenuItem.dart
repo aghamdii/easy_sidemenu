@@ -77,12 +77,15 @@ class _SideMenuItemState extends State<SideMenuItem> {
           child: ValueListenableBuilder(
             valueListenable: Global.displayModeState,
             builder: (context, value, child) {
-              return Padding(
-                padding: value == SideMenuDisplayMode.compact
-                    ? EdgeInsets.only(left: 8.0)
-                    : EdgeInsets.only(left: 8.0, bottom: 8, top: 8),
-                child: Column(
+              return 
+              // Padding(
+              //   padding: value == SideMenuDisplayMode.compact
+              //       ? EdgeInsets.only(left: 8.0)
+              //       : EdgeInsets.only(left: 8.0, bottom: 8, top: 8),
+              //   child: 
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
                       widget.icon,
@@ -106,7 +109,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
                         ),
                       ),
                   ],
-                ),
+                // ),
               );
             },
           ),
