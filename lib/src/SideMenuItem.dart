@@ -82,9 +82,14 @@ class _SideMenuItemState extends State<SideMenuItem> {
                   padding: value == SideMenuDisplayMode.compact
                     ? EdgeInsets.only(left: 8.0)
                     : EdgeInsets.only( bottom: 25, top: 25),
-                  decoration: BoxDecoration(border: Border(left: BorderSide(width: 10, color: widget.priority == curentPage
+                  decoration: new BoxDecoration(
+                    gradient: new LinearGradient(
+                      stops: [0.02, 0.02],
+                      colors: [widget.priority == curentPage
                             ? Global.style.selectedIconColor ?? Colors.black
-                            : Global.style.unselectedIconColor ?? Colors.black54,),), borderRadius: BorderRadius.only(topLeft: Radius.circular(16), bottomLeft: Radius.circular(16))),
+                            : Global.style.unselectedIconColor ?? Colors.black54, Colors.white]
+                    ),
+                    borderRadius: new BorderRadius.all(const Radius.circular(6.0))),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
