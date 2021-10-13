@@ -79,6 +79,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
             builder: (context, value, child) {
               return 
               Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding: value == SideMenuDisplayMode.compact
