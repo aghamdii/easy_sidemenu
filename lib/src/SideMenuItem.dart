@@ -54,7 +54,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
   /// Set background color of [SideMenuItem]
   Color _setColor() {
     if (widget.priority == curentPage) {
-      return Global.style.selectedColor ?? Theme.of(context).highlightColor;
+      return Color(0XffF6F6FC);
     } else if (isHovered) {
       return Global.style.hoverColor ?? Colors.transparent;
     } else {
