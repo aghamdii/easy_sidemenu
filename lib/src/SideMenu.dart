@@ -65,8 +65,11 @@ class SideMenu extends StatelessWidget {
       duration: Duration(milliseconds: 350),
       width: _widthSize(
           Global.style.displayMode ?? SideMenuDisplayMode.auto, context),
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height * (0.89),
       color: Global.style.backgroundColor ?? null,
+      decoration: BoxDecoration(borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(16),
+          bottomLeft: const Radius.circular(16))),
       child: Stack(
         children: [
           SingleChildScrollView(
