@@ -65,64 +65,54 @@ class _SideMenuItemState extends State<SideMenuItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: Container(
-              height: widget.itemHeight,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: _setColor(),
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
-              child: ValueListenableBuilder(
-                valueListenable: Global.displayModeState,
-                builder: (context, value, child) {
-                  return 
-                  Padding(
-                    padding: value == SideMenuDisplayMode.compact
-                        ? EdgeInsets.only(left: 8.0)
-                        : EdgeInsets.only( bottom: 15, top: 15),
-                    child: 
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          widget.icon,
-                          color: widget.priority == curentPage
-                              ? Global.style.selectedIconColor ?? Colors.black
-                              : Global.style.unselectedIconColor ?? Colors.black54,
-                          size: Global.style.iconSize ?? 24,
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        if (value == SideMenuDisplayMode.open)
-                          Expanded(
-                            child: Text(
-                              widget.title,
-                              style: widget.priority == curentPage
-                                  ? TextStyle(fontSize: 17, color: Colors.black)
-                                      .merge(Global.style.selectedTitleTextStyle)
-                                  : TextStyle(fontSize: 17, color: Colors.black54)
-                                      .merge(Global.style.unselectedTitleTextStyle),
-                            ),
-                          ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 5),
+        child: Container(
+          height: widget.itemHeight,
+          // width: double.infinity,
+          decoration: BoxDecoration(
+            color: _setColor(),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
-          Container(
-            width: 10,
-            color: widget.priority == curentPage
-                              ? Global.style.selectedIconColor ?? Colors.black
-                              : Global.style.unselectedIconColor ?? Colors.black54,
-          )
-        ],
+          child: ValueListenableBuilder(
+            valueListenable: Global.displayModeState,
+            builder: (context, value, child) {
+              return 
+              Padding(
+                padding: value == SideMenuDisplayMode.compact
+                    ? EdgeInsets.only(left: 8.0)
+                    : EdgeInsets.only( bottom: 15, top: 15),
+                child: 
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(
+                      widget.icon,
+                      color: widget.priority == curentPage
+                          ? Global.style.selectedIconColor ?? Colors.black
+                          : Global.style.unselectedIconColor ?? Colors.black54,
+                      size: Global.style.iconSize ?? 24,
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    if (value == SideMenuDisplayMode.open)
+                      Expanded(
+                        child: Text(
+                          widget.title,
+                          style: widget.priority == curentPage
+                              ? TextStyle(fontSize: 17, color: Colors.black)
+                                  .merge(Global.style.selectedTitleTextStyle)
+                              : TextStyle(fontSize: 17, color: Colors.black54)
+                                  .merge(Global.style.unselectedTitleTextStyle),
+                        ),
+                      ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
       onTap: () => widget.onTap(),
       onHover: (value) {
