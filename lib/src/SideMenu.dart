@@ -23,8 +23,10 @@ class SideMenu extends StatelessWidget {
   /// [SideMenu] can be configured by this
   final SideMenuStyle? style;
 
-  final double topRightBorder;
-  final double bottomRightBorder;
+  final double topBorder;
+  final double bottomBorder;
+  // either ar or en
+  final String languageUsed;
 
   /// ### Easy Sidemenu widget
   ///
@@ -34,8 +36,9 @@ class SideMenu extends StatelessWidget {
     Key? key,
     required this.items,
     required this.controller,
-    required this.bottomRightBorder,
-    required this.topRightBorder,
+    required this.topBorder,
+    required this.bottomBorder,
+    required this.languageUsed,
     this.title,
     this.footer,
     this.style,
@@ -68,10 +71,15 @@ class SideMenu extends StatelessWidget {
 
     return AnimatedContainer(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(topRightBorder),
-          bottomRight: Radius.circular(bottomRightBorder),
-        ),
+        borderRadius: languageUsed == "en"
+            ? BorderRadius.only(
+                topRight: Radius.circular(topBorder),
+                bottomRight: Radius.circular(bottomBorder),
+              )
+            : BorderRadius.only(
+                topLeft: Radius.circular(topBorder),
+                bottomLeft: Radius.circular(bottomBorder),
+              ),
         color: Global.style.backgroundColor ?? null,
       ),
       duration: Duration(milliseconds: 350),
