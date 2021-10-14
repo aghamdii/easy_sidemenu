@@ -23,6 +23,9 @@ class SideMenu extends StatelessWidget {
   /// [SideMenu] can be configured by this
   final SideMenuStyle? style;
 
+  final double topRightBorder;
+  final double bottomRightBorder;
+
   /// ### Easy Sidemenu widget
   ///
   /// Sidemenu is a menu that is usually located
@@ -31,6 +34,8 @@ class SideMenu extends StatelessWidget {
     Key? key,
     required this.items,
     required this.controller,
+    required this.bottomRightBorder,
+    required this.topRightBorder,
     this.title,
     this.footer,
     this.style,
@@ -62,11 +67,17 @@ class SideMenu extends StatelessWidget {
     Global.style = style ?? SideMenuStyle();
 
     return AnimatedContainer(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(topRightBorder),
+          bottomRight: Radius.circular(bottomRightBorder),
+        ),
+        color: Global.style.backgroundColor ?? null,
+      ),
       duration: Duration(milliseconds: 350),
       width: _widthSize(
           Global.style.displayMode ?? SideMenuDisplayMode.auto, context),
-      height: MediaQuery.of(context).size.height * (0.89),
-      color: Global.style.backgroundColor ?? null,
+
       // decoration: BoxDecoration(borderRadius: BorderRadius.only(
       //     topLeft: const Radius.circular(16),
       //     bottomLeft: const Radius.circular(16))),

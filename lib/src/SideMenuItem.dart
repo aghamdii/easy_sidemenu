@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'SideMenuDisplayMode.dart';
 import 'Global/Global.dart';
 import 'package:flutter/material.dart';
@@ -6,14 +7,14 @@ class SideMenuItem extends StatefulWidget {
   /// #### Side Menu Item
   ///
   /// This is a widget as [SideMenu] items with text and icon
-  const SideMenuItem({
-    Key? key,
-    required this.onTap,
-    required this.title,
-    required this.icon,
-    required this.priority,
-    required this.itemHeight
-  }) : super(key: key);
+  const SideMenuItem(
+      {Key? key,
+      required this.onTap,
+      required this.title,
+      required this.iconPath,
+      required this.priority,
+      required this.itemHeight})
+      : super(key: key);
 
   /// A function that call when tap on [SideMenuItem]
   final Function onTap;
@@ -22,7 +23,7 @@ class SideMenuItem extends StatefulWidget {
   final String title;
 
   /// A Icon to display before [title]
-  final IconData icon;
+  final String iconPath;
 
   final double itemHeight;
 
@@ -77,48 +78,51 @@ class _SideMenuItemState extends State<SideMenuItem> {
           child: ValueListenableBuilder(
             valueListenable: Global.displayModeState,
             builder: (context, value, child) {
-              return 
-                Container(
-                  padding: value == SideMenuDisplayMode.compact
+              return Container(
+                padding: value == SideMenuDisplayMode.compact
                     ? EdgeInsets.only(left: 8.0)
-                    : EdgeInsets.only( bottom: 25, top: 25),
-                  decoration: new BoxDecoration(
-                    gradient: new LinearGradient(
-                      stops: [0.04, 0.02],
-                      colors: [widget.priority == curentPage
-                            ? Global.style.selectedIconColor ?? Colors.white
-                            :  Colors.white, widget.priority == curentPage
-                            ? Color(0XffF6F6FC)
-                            :  Colors.white]
+                    : EdgeInsets.only(bottom: 25, top: 25),
+                decoration: new BoxDecoration(
+                    gradient: new LinearGradient(stops: [
+                      0.04,
+                      0.02
+                    ], colors: [
+                      widget.priority == curentPage
+                          ? Global.style.selectedIconColor ?? Colors.white
+                          : Colors.white,
+                      widget.priority == curentPage
+                          ? Color(0XffF6F6FC)
+                          : Colors.white
+                    ]),
+                    borderRadius:
+                        new BorderRadius.all(const Radius.circular(6.0))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      widget.iconPath,
+                      color: widget.priority == curentPage
+                          ? Global.style.selectedIconColor ?? Colors.black
+                          : Global.style.unselectedIconColor ?? Colors.black54,
+                      height: Global.style.iconSize ?? 24,
                     ),
-                    borderRadius: new BorderRadius.all(const Radius.circular(6.0))),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        widget.icon,
-                        color: widget.priority == curentPage
-                            ? Global.style.selectedIconColor ?? Colors.black
-                            : Global.style.unselectedIconColor ?? Colors.black54,
-                        size: Global.style.iconSize ?? 24,
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      if (value == SideMenuDisplayMode.open)
-                        Expanded(
-                          child: Text(
-                            widget.title,
-                            style: widget.priority == curentPage
-                                ? TextStyle(fontSize: 17, color: Colors.black)
-                                    .merge(Global.style.selectedTitleTextStyle)
-                                : TextStyle(fontSize: 17, color: Colors.black54)
-                                    .merge(Global.style.unselectedTitleTextStyle),
-                          ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    if (value == SideMenuDisplayMode.open)
+                      Expanded(
+                        child: Text(
+                          widget.title,
+                          style: widget.priority == curentPage
+                              ? TextStyle(fontSize: 17, color: Colors.black)
+                                  .merge(Global.style.selectedTitleTextStyle)
+                              : TextStyle(fontSize: 17, color: Colors.black54)
+                                  .merge(Global.style.unselectedTitleTextStyle),
                         ),
-                    ],
-                  ),
-                );
+                      ),
+                  ],
+                ),
+              );
             },
           ),
         ),

@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
@@ -43,16 +44,21 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           SideMenu(
             controller: page,
+            bottomRightBorder: 12,
+            topRightBorder: 12,
             style: SideMenuStyle(
-              displayMode: SideMenuDisplayMode.auto,
-              hoverColor: Colors.blue[100],
-              selectedColor: Colors.lightBlue,
-              selectedTitleTextStyle: TextStyle(color: Colors.white),
-              selectedIconColor: Colors.white,
-              // backgroundColor: Colors.amber
-              // openSideMenuWidth: 200
+              displayMode: SideMenuDisplayMode.open,
+              openSideMenuWidth: 100,
+              selectedColor: Color(0xFFEDECF8),
+              selectedIconColor: Color(0xFF5044B8),
+              unselectedIconColor: Colors.black54,
+              backgroundColor: Colors.white,
+              selectedTitleTextStyle: TextStyle(color: Color(0xFF5044B8)),
+              unselectedTitleTextStyle: TextStyle(color: Color(0xFF515151)),
+              iconSize: 38,
             ),
             title: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ConstrainedBox(
                   constraints: BoxConstraints(
@@ -79,55 +85,55 @@ class _MyHomePageState extends State<MyHomePage> {
             items: [
               SideMenuItem(
                 priority: 0,
-                itemHeight: 8,
+                itemHeight: 40,
                 title: 'Dashboard',
                 onTap: () {
                   page.jumpToPage(0);
                 },
-                icon: Icons.home,
+                iconPath: "assets/images/home_icon.svg",
               ),
               SideMenuItem(
                 priority: 1,
-                itemHeight: 8,
+                itemHeight: 40,
                 title: 'Users',
                 onTap: () {
                   page.jumpToPage(1);
                 },
-                icon: Icons.supervisor_account,
+                iconPath: "assets/images/home_icon.svg",
               ),
               SideMenuItem(
                 priority: 2,
-                itemHeight: 8,
+                itemHeight: 40,
                 title: 'Files',
                 onTap: () {
                   page.jumpToPage(2);
                 },
-                icon: Icons.file_copy_rounded,
+                iconPath: "assets/images/home_icon.svg",
               ),
               SideMenuItem(
                 priority: 3,
-                itemHeight: 8,
+                itemHeight: 40,
                 title: 'Download',
                 onTap: () {
                   page.jumpToPage(3);
                 },
-                icon: Icons.download,
+                iconPath: "assets/images/home_icon.svg",
               ),
               SideMenuItem(
                 priority: 4,
-                itemHeight: 8,
+                itemHeight: 40,
                 title: 'Settings',
                 onTap: () {
                   page.jumpToPage(4);
                 },
-                icon: Icons.settings,
+                iconPath: "assets/images/home_icon.svg",
               ),
               SideMenuItem(
                 priority: 6,
-                itemHeight: 8,
+                itemHeight: 40,
                 title: 'Exit',
                 onTap: () async {},
-                icon: Icons.exit_to_app,
+                iconPath: "assets/images/home_icon.svg",
               ),
             ],
           ),
@@ -136,7 +142,6 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: page,
               children: [
                 Container(
-                  color: Colors.white,
                   child: Center(
                     child: Text(
                       'Page\n   1',
