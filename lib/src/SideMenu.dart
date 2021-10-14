@@ -71,7 +71,7 @@ class SideMenu extends StatelessWidget {
 
     return AnimatedContainer(
       decoration: BoxDecoration(
-        borderRadius: languageUsed == "en"
+        borderRadius: languageUsed == "ar"
             ? BorderRadius.only(
                 topRight: Radius.circular(topBorder),
                 bottomRight: Radius.circular(bottomBorder),

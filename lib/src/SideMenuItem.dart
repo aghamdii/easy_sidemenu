@@ -91,10 +91,10 @@ class _SideMenuItemState extends State<SideMenuItem> {
                         0.04,
                         0.02,
                       ],
-                      begin: widget.language == "en"
+                      begin: widget.language == "ar"
                           ? Alignment.centerLeft
                           : Alignment.centerRight,
-                      end: widget.language == "en"
+                      end: widget.language == "ar"
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       colors: [
