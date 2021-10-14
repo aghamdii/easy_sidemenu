@@ -13,6 +13,7 @@ class SideMenuItem extends StatefulWidget {
       required this.title,
       required this.iconPath,
       required this.priority,
+      required this.language,
       required this.itemHeight})
       : super(key: key);
 
@@ -26,6 +27,8 @@ class SideMenuItem extends StatefulWidget {
   final String iconPath;
 
   final double itemHeight;
+
+  final String language;
 
   /// Priority of item to show on [SideMenu], lower value is displayed at the top
   ///
@@ -67,7 +70,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
   Widget build(BuildContext context) {
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: EdgeInsets.symmetric(horizontal: 0),
         child: Container(
           height: widget.itemHeight,
           width: double.infinity,
@@ -83,17 +86,26 @@ class _SideMenuItemState extends State<SideMenuItem> {
                     ? EdgeInsets.only(left: 8.0)
                     : EdgeInsets.only(bottom: 25, top: 25),
                 decoration: new BoxDecoration(
-                    gradient: new LinearGradient(stops: [
-                      0.04,
-                      0.02
-                    ], colors: [
-                      widget.priority == curentPage
-                          ? Global.style.selectedIconColor ?? Colors.white
-                          : Colors.white,
-                      widget.priority == curentPage
-                          ? Color(0XffF6F6FC)
-                          : Colors.white
-                    ]),
+                    gradient: LinearGradient(
+                      stops: [
+                        0.04,
+                        0.02,
+                      ],
+                      begin: widget.language == "en"
+                          ? Alignment.centerLeft
+                          : Alignment.centerRight,
+                      end: widget.language == "en"
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
+                      colors: [
+                        widget.priority == curentPage
+                            ? Global.style.selectedIconColor ?? Colors.white
+                            : Colors.white,
+                        widget.priority == curentPage
+                            ? Color(0XffF6F6FC)
+                            : Colors.white
+                      ],
+                    ),
                     borderRadius:
                         new BorderRadius.all(const Radius.circular(6.0))),
                 child: Column(
