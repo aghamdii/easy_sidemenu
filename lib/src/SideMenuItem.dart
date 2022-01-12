@@ -14,6 +14,7 @@ class SideMenuItem extends StatefulWidget {
       required this.iconPath,
       required this.priority,
       required this.language,
+      this.hasBottomMargin: true,
       required this.itemHeight})
       : super(key: key);
 
@@ -36,6 +37,8 @@ class SideMenuItem extends StatefulWidget {
   /// * This value should be unique
   /// * This value used for page controller index
   final int priority;
+
+  final bool hasBottomMargin;
 
   @override
   _SideMenuItemState createState() => _SideMenuItemState();
@@ -69,7 +72,10 @@ class _SideMenuItemState extends State<SideMenuItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Padding(
+      child: Container(
+        margin: widget.hasBottomMargin
+            ? EdgeInsets.only(bottom: 10)
+            : EdgeInsets.only(bottom: 0),
         padding: EdgeInsets.symmetric(horizontal: 0),
         child: Container(
           height: widget.itemHeight,
